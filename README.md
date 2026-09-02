@@ -47,4 +47,4 @@ The Random Forest model identified structural footprint as the primary determina
 1. **Floor Area** (*Top Predictor* — 55.67 MDA / 153.03 Gini)
 2. **Land Area** (46.07 MDA / 85.55 Gini)
 3. **Bathrooms** (28.58 MDA / 70.74 Gini)
-4. **Location Coordinates** (`Longitude` & `Latitude`)
+
