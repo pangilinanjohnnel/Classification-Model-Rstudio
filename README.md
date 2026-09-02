@@ -21,7 +21,7 @@ The Philippine real estate market features diverse residential properties across
 
 A **Random Forest** classifier (500 trees) was trained on 847 samples and evaluated on a 211-sample test set (80/20 split).
 
-### Key Performance Metrics (`Positive Class: Expensive`)
+### Results
 
 | Evaluation Metric | Value | Model Performance Summary |
 | :--- | :---: | :--- |
