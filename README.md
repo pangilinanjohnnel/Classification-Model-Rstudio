@@ -6,45 +6,45 @@ Predicting whether a residential property in the Philippines falls into the **Af
 
 ## 📌 Problem Statement
 The Philippine real estate market features diverse residential properties across varying locations, sizes, and price points. Real estate developers, investors, and homebuyers need an automated, data-driven method to categorize properties quickly. 
-
-By leveraging property characteristics, this project builds a classification model to predict a property's price bracket accurately.
-
----
-
-## ❓ Research Questions
-1. **Predictive Capability:** Can physical and location-based housing characteristics reliably predict whether a property is classified as *Affordable* or *Expensive*?
-2. **Feature Importance:** Which housing characteristics contribute most significantly to determining a property's price category?
-
----
-
-## 📊 Dataset Overview
-* **Dataset:** Philippines Housing Market
-* **Source:** [Kaggle Dataset](https://www.kaggle.com/datasets/klekzee/phillipines-housing-market/data)
-* **Features:** `Price`, `Location`, `Bedrooms`, `Bathrooms`, `Floor Area`, `Land Area`, `Latitude`, `Longitude`
+* **Research Questions:**
+  1. Can housing characteristics reliably predict if a property is *Affordable* or *Expensive*?
+  2. Which features contribute most significantly to determining the price category?
+* **Dataset:** [Philippines Housing Market (Kaggle)](https://www.kaggle.com/datasets/klekzee/phillipines-housing-market/data)
+* **Target Variable (`Price_Category`):** Binary split using the median price (**PHP 10,500,000**) to mitigate extreme outliers.
+  * 🟢 **Affordable:** $\le$ PHP 10.5M (530 properties)
+  * 🔴 **Expensive:** $>$ PHP 10.5M (528 properties)
+* **Predictors:** `Location`, `Bedrooms`, `Bathrooms`, `Floor.Area`, `Land.Area`, `Latitude`, `Longitude` *(Raw `Price` removed to prevent leakage)*.
 
 ---
 
-## 🛠️ Feature Engineering & Data Setup
-* **Target Variable (`Price_Category`):** Created using the **median housing price** as the threshold to handle potential extreme outliers.
-  * 🟢 **Affordable:** Price $\le$ Median Price
-  * 🔴 **Expensive:** Price $>$ Median Price
-* **Data Leakage Prevention:** The raw `Price` variable was removed prior to modeling, forcing the classifier to rely solely on property attributes.
-* **Predictors:** `Location`, `Bedrooms`, `Bathrooms`, `Floor Area`, `Land Area`, `Latitude`, `Longitude`
+## ⚙️ Workflow & Model Performance
+
+A **Random Forest** classifier (500 trees) was trained on 847 samples and evaluated on a 211-sample test set (80/20 split).
+
+### Key Performance Metrics (`Positive Class: Expensive`)
+
+| Evaluation Metric | Value | Model Performance Summary |
+| :--- | :---: | :--- |
+| **Accuracy** | **92.89%** | 95% CI: (88.55%, 95.97%) |
+| **Kappa Statistic** | **0.8578** | High inter-rater agreement |
+| **ROC - AUC** | **0.9863** | Outstanding class separation |
+| **Sensitivity (Recall)** | **94.29%** | Correctly identified Expensive homes |
+| **Specificity** | **91.51%** | Correctly identified Affordable homes |
+| **F1-Score** | **92.96%** | Balanced precision and recall |
+
+### Confusion Matrix
+| | Actual: Affordable | Actual: Expensive |
+| :--- | :---: | :---: |
+| **Predicted: Affordable** | **97** *(True Neg)* | **6** *(False Neg)* |
+| **Predicted: Expensive** | **9** *(False Pos)* | **99** *(True Pos)* |
 
 ---
 
-## ⚙️ Methodology & Modeling Workflow
+## 🔑 Key Drivers (Feature Importance)
 
-1. **Preprocessing & Factor Encoding:** Convert `Price_Category` into a target factor variable and separate predictor variables.
-2. **Model Training:** Fit the classification model using structural and geographical attributes.
-3. **Feature Importance Analysis:** 
-   * Extract numeric feature importance scores.
-   * Generate a **Variable Importance Plot** to visually assess key pricing drivers.
-4. **Prediction & Probability Scoring:**
-   * Predict binary categories (*Affordable* vs. *Expensive*) on test data.
-   * Calculate probability scores representing the likelihood of a property belonging to the *Expensive* class.
-5. **Evaluation:**
-   * **Confusion Matrix:** Evaluated with **"Expensive"** designated as the positive class.
-   * **Overall Metrics:** Accuracy, Cohen’s Kappa.
-   * **Class-Specific Metrics:** Sensitivity (Recall), Specificity, Precision, F1-Score.
-   * **ROC & AUC Analysis:** Plot the Receiver Operating Characteristic (ROC) curve and compute the Area Under the Curve (AUC) to evaluate class separation capability.
+The Random Forest model identified structural footprint as the primary determinant of price tier:
+
+1. **Floor Area** (*Top Predictor* — 55.67 MDA / 153.03 Gini)
+2. **Land Area** (46.07 MDA / 85.55 Gini)
+3. **Bathrooms** (28.58 MDA / 70.74 Gini)
+4. **Location Coordinates** (`Longitude` & `Latitude`)
