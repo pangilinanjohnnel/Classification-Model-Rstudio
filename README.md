@@ -57,6 +57,6 @@ Yes. The model achieved a strong 92.89% accuracy, with an ROC-AUC of 0.9863, ind
 3. Which features contribute most significantly to predicting price category?
 Floor Area, Land Area, and Bathrooms were the three most important predictors according to the Random Forest feature-importance results. This suggests that the physical characteristics of a property, particularly its size and structural capacity, provided substantial predictive information for distinguishing between Affordable and Expensive homes.
 
-##🏆 Overall Finding
+## 🏆 Overall Finding
 The results indicate that structural and geographic housing characteristics can be used to effectively classify Philippine residential properties into price categories, even when the raw Price variable is excluded from the predictors. Among the available features, Floor Area was the strongest predictor, followed by Land Area and Bathrooms.
 
