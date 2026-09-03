@@ -4,7 +4,7 @@ Predicting whether a residential property in the Philippines falls into the **Af
 
 ---
 
-## 📌 Problem Statement
+## 📌 Problem Statement:
 The Philippine real estate market features diverse residential properties across varying locations, sizes, and price points. Real estate developers, investors, and homebuyers need an automated, data-driven method to categorize properties quickly. 
 * **Research Questions:**
   1. Can housing characteristics reliably predict if a property is *Affordable* or *Expensive*?
@@ -17,11 +17,11 @@ The Philippine real estate market features diverse residential properties across
 
 ---
 
-## ⚙️ Methodology
+## ⚙️ Methodology:
 
 A **Random Forest** classifier (500 trees) was trained on 847 samples and evaluated on a 211-sample test set (80/20 split).
 
-### Results and Evaluation
+### Results and Evaluation:
 
 | Evaluation Metric | Value | Model Performance Summary |
 | :--- | :---: | :--- |
@@ -32,7 +32,7 @@ A **Random Forest** classifier (500 trees) was trained on 847 samples and evalua
 | **Specificity** | **91.51%** | Correctly identified Affordable homes |
 | **F1-Score** | **92.96%** | Balanced precision and recall |
 
-### Confusion Matrix
+### Confusion Matrix:
 | | Actual: Affordable | Actual: Expensive |
 | :--- | :---: | :---: |
 | **Predicted: Affordable** | **97** *(True Neg)* | **6** *(False Neg)* |
@@ -40,11 +40,23 @@ A **Random Forest** classifier (500 trees) was trained on 847 samples and evalua
 
 ---
 
-## 🔑 Feature Importance
+## 🔑 Feature Importance:
 
 The Random Forest model identified structural footprint as the primary determinant of price tier:
 
 1. **Floor Area** (*Top Predictor* — 55.67 MDA / 153.03 Gini)
 2. **Land Area** (46.07 MDA / 85.55 Gini)
 3. **Bathrooms** (28.58 MDA / 70.74 Gini)
+
+## 📌 Conclusion:
+The Random Forest classifier demonstrated strong performance in predicting whether Philippine residential properties belong to the Affordable or Expensive price category.
+
+1. Can housing characteristics reliably predict price category?
+Yes. The model achieved a strong 92.89% accuracy, with an ROC-AUC of 0.9863, indicating excellent predictive performance and strong separation between the two price categories. The model also achieved 94.29% sensitivity and 91.51% specificity, showing that it was effective at identifying both Expensive and Affordable properties.
+
+3. Which features contribute most significantly to predicting price category?
+Floor Area, Land Area, and Bathrooms were the three most important predictors according to the Random Forest feature-importance results. This suggests that the physical characteristics of a property, particularly its size and structural capacity, provided substantial predictive information for distinguishing between Affordable and Expensive homes.
+
+##🏆 Overall Finding
+The results indicate that structural and geographic housing characteristics can be used to effectively classify Philippine residential properties into price categories, even when the raw Price variable is excluded from the predictors. Among the available features, Floor Area was the strongest predictor, followed by Land Area and Bathrooms.
 
