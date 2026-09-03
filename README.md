@@ -17,11 +17,11 @@ The Philippine real estate market features diverse residential properties across
 
 ---
 
-## ⚙️ Workflow & Model Performance
+## ⚙️ Methodology and Model Performance
 
 A **Random Forest** classifier (500 trees) was trained on 847 samples and evaluated on a 211-sample test set (80/20 split).
 
-### Results
+### Results and Evaluation
 
 | Evaluation Metric | Value | Model Performance Summary |
 | :--- | :---: | :--- |
@@ -40,7 +40,7 @@ A **Random Forest** classifier (500 trees) was trained on 847 samples and evalua
 
 ---
 
-## 🔑 Key Drivers (Feature Importance)
+## 🔑 Feature Importance
 
 The Random Forest model identified structural footprint as the primary determinant of price tier:
 
