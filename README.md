@@ -17,7 +17,7 @@ The Philippine real estate market features diverse residential properties across
 
 ---
 
-## ⚙️ Methodology and Model Performance
+## ⚙️ Methodology
 
 A **Random Forest** classifier (500 trees) was trained on 847 samples and evaluated on a 211-sample test set (80/20 split).
 
